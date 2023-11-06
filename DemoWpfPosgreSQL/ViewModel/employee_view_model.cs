@@ -109,7 +109,7 @@ namespace DemoWpfPosgreSQL.ViewModel
         public EmployeeViewModel(IRepository<Employee> employee_repository)
         {
             employe_repository_ = employee_repository;
-            employees_list_ = new ObservableCollection<Employee>(employe_repository_.GetAll());
+            employees_list_ = new ObservableCollection<Employee>(employe_repository_.GetAll().OrderBy(s=>s.EmployeeCode));
             SelectedEmployee = new Employee();
         }
         #region ICommand
