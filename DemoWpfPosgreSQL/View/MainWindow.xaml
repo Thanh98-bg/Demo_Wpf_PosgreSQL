@@ -25,19 +25,19 @@
             </ListView.View>
         </ListView>
         <!-- Textboxes and labels for employee details -->
-        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="132,62,0,0" Name="txtEmail" VerticalAlignment="Top" Width="178" Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="132,102,0,0" Name="txtMobile" VerticalAlignment="Top" Width="178" Text="{Binding Path=Mobile, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="132,142,0,0" Name="txtAge" VerticalAlignment="Top" Width="178" Text="{Binding Path=Age, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="132,21,0,0" Name="txtEmployeeName" VerticalAlignment="Top" Width="178" Grid.Row="1" Text="{Binding Path=EmployeeName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBox Grid.Row="1" TabIndex="1" Height="23" HorizontalAlignment="Left" Margin="132,62,0,0" Name="txtEmail" VerticalAlignment="Top" Width="178" Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBox Grid.Row="1" TabIndex="2" Height="23" HorizontalAlignment="Left" Margin="132,102,0,0" Name="txtMobile" VerticalAlignment="Top" Width="178" Text="{Binding Path=Mobile, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBox Grid.Row="1" TabIndex="3" Height="23" HorizontalAlignment="Left" Margin="132,142,0,0" Name="txtAge" VerticalAlignment="Top" Width="178" Text="{Binding Path=Age, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        <TextBox Height="23" TabIndex="0" HorizontalAlignment="Left" Margin="132,21,0,0" Name="txtEmployeeName" VerticalAlignment="Top" Width="178" Grid.Row="1" Text="{Binding Path=EmployeeName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
         <Label Content="EmployeeName" HorizontalAlignment="Left" Margin="23,17,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="23,60,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <Label Content="Mobile" HorizontalAlignment="Left" Margin="23,100,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
         <Label Content="Age" HorizontalAlignment="Left" Margin="23,138,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <Button Content="Update" Height="23"  Margin="476,70,250,0" Name="btnUpdate" VerticalAlignment="Top" Width="141" 
+        <Button Content="Update" Height="23"  Margin="476,70,250,0" Name="btnUpdate" TabIndex="5" VerticalAlignment="Top" Width="141" 
                 Command="{Binding UpdateCommand}" Grid.Row="1"/>
-        <Button Content="Delete" Height="23"  Margin="476,125,250,0" Name="btnDelete" VerticalAlignment="Top" Width="141" 
+        <Button Content="Delete" Height="23"  Margin="476,125,250,0" Name="btnDelete" TabIndex="6" VerticalAlignment="Top" Width="141" 
                 Command="{Binding DeleteCommand}" Grid.Row="1"/>
-        <Button Content="Insert" Height="23"  Margin="476,19,250,0" Name="btnInsert" VerticalAlignment="Top" Width="141" 
+        <Button Content="Insert" Height="23"  Margin="476,19,250,0" Name="btnInsert" TabIndex="4" VerticalAlignment="Top" Width="141" 
                 Command="{Binding InsertCommand}" Grid.RowSpan="2"/>
     </Grid>
 </Window>

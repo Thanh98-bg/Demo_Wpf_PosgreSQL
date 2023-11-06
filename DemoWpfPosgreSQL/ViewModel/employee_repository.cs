@@ -11,8 +11,7 @@ using System.Threading.Tasks;
 
 namespace DemoWpfPosgreSQL.ViewModel
 {
-    public interface IEmployeeRepository : IRepository<Employee> { }
-    public class SimpleEmployeeRepository : IEmployeeRepository
+    public class SimpleEmployeeRepository : IRepository<Employee>
     {
         private ICollection<Employee> employee_list_ = new List<Employee>()
         {
@@ -57,7 +56,7 @@ namespace DemoWpfPosgreSQL.ViewModel
         }
         protected override void AddItem(Employee item)
         {
-            string command_text = @"INSERT INTO " + table_name_ + @" (""EmployeeName"", ""Email"", ""Mobile"", ""Age"") VALUES (@employee_name, @email, @mobile, @age) RETURNING ""EmployeeCode"";";
+            string command_text = $@"INSERT INTO {table_name_}(""EmployeeName"", ""Email"", ""Mobile"", ""Age"") VALUES (@employee_name, @email, @mobile, @age) RETURNING ""EmployeeCode"";";
             using (NpgsqlCommand command = (NpgsqlCommand)command_)
             {
                 command.CommandText = command_text;
@@ -71,7 +70,7 @@ namespace DemoWpfPosgreSQL.ViewModel
 
         protected override void DeleteItem(Employee item)
         {
-            string command_text = @"DELETE FROM "+table_name_+ @" WHERE ""EmployeeCode""="+item.EmployeeCode+";";
+            string command_text = $@"DELETE FROM {table_name_} WHERE ""EmployeeCode""={item.EmployeeCode};";
             using (NpgsqlCommand command = (NpgsqlCommand)command_)
             {
                 command.CommandText = command_text;
