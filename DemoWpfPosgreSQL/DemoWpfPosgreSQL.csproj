@@ -88,6 +88,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataAccess\base_repository.cs" />
+    <Compile Include="DataAccess\simple_employee_repository.cs" />
     <Compile Include="ViewModel\base_view_model.cs" />
     <Compile Include="DataAccess\employee_repository.cs" />
     <Compile Include="ViewModel\employee_view_model.cs" />
@@ -100,7 +101,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\relay_command.cs" />
-    <Compile Include="ViewModel\repository_interface.cs" />
+    <Compile Include="DataAccess\repository_interface.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

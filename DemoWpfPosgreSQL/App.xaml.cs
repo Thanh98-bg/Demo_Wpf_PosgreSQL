@@ -1,4 +1,7 @@
-﻿using DemoWpfPosgreSQL.ViewModel;
+﻿using DemoWpfPosgreSQL.DataAccess;
+using DemoWpfPosgreSQL.Model;
+using DemoWpfPosgreSQL.ViewModel;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,7 +21,8 @@ namespace DemoWpfPosgreSQL
         {
             base.OnStartup(e);
             DemoWpfPosgreSQL.MainWindow window = new MainWindow();
-            EmployeeViewModel vm = new EmployeeViewModel();
+            IRepository<Employee> employee_repository = new EmployeeRepository(NpgsqlFactory.Instance);
+            EmployeeViewModel vm = new EmployeeViewModel(employee_repository);
             window.DataContext = vm;
             window.Show();
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.Common;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -9,14 +10,13 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using DemoWpfPosgreSQL.DataAccess;
 using DemoWpfPosgreSQL.Model;
-using Npgsql;
 
 namespace DemoWpfPosgreSQL.ViewModel
 {
     public class EmployeeViewModel : BaseViewModel
     {
         #region Properties
-        private IRepository<Employee> employe_repository_ = new EmployeeRepository(NpgsqlFactory.Instance);
+        private IRepository<Employee> employe_repository_;
         private ObservableCollection<Employee> employees_list_;
         public ObservableCollection<Employee> Employees
         {
@@ -106,8 +106,9 @@ namespace DemoWpfPosgreSQL.ViewModel
             }
         }
         #endregion
-        public EmployeeViewModel()
+        public EmployeeViewModel(IRepository<Employee> employee_repository)
         {
+            employe_repository_ = employee_repository;
             employees_list_ = new ObservableCollection<Employee>(employe_repository_.GetAll());
             SelectedEmployee = new Employee();
         }

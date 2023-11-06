@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DemoWpfPosgreSQL.ViewModel
+namespace DemoWpfPosgreSQL.DataAccess
 {
     public interface IRepository<T> where T:class
     {
