@@ -89,7 +89,7 @@
     </ApplicationDefinition>
     <Compile Include="DataAccess\base_repository.cs" />
     <Compile Include="ViewModel\base_view_model.cs" />
-    <Compile Include="ViewModel\employee_repository.cs" />
+    <Compile Include="DataAccess\employee_repository.cs" />
     <Compile Include="ViewModel\employee_view_model.cs" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

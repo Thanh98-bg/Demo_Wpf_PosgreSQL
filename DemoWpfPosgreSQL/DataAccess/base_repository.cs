@@ -1,5 +1,4 @@
-﻿using DemoWpfPosgreSQL.Model;
-using DemoWpfPosgreSQL.ViewModel;
+﻿using DemoWpfPosgreSQL.ViewModel;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -17,12 +16,11 @@ namespace DemoWpfPosgreSQL.DataAccess
         protected DbConnection connection_;
         protected DbCommand command_;
         protected string table_name_;
-        public BaseRepository(string table_name, DbProviderFactory provider_factory)
+        public BaseRepository(DbProviderFactory provider_factory)
         {
             provider_factory_ = provider_factory;
             connection_ = provider_factory_.CreateConnection();
             connection_.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            table_name_ = table_name;
         }
         #region ProtectedMethods
         protected abstract ICollection<T> ExecuteReader();

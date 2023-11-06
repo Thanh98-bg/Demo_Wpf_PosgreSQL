@@ -16,7 +16,7 @@ namespace DemoWpfPosgreSQL.ViewModel
     public class EmployeeViewModel : BaseViewModel
     {
         #region Properties
-        private BaseRepository<Employee> employe_repository_ = new EmployeeRepository("employees", Npgsql.NpgsqlFactory.Instance);
+        private IRepository<Employee> employe_repository_ = new EmployeeRepository(NpgsqlFactory.Instance);
         private ObservableCollection<Employee> employees_list_;
         public ObservableCollection<Employee> Employees
         {

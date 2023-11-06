@@ -9,25 +9,25 @@ namespace DemoWpfPosgreSQL.ViewModel
 {
 	public class RelayCommand : ICommand
 	{
-		private readonly Action<object> _execute;
-		private readonly Predicate<object> _canExecute;
+		private readonly Action<object> execute_;
+		private readonly Predicate<object> can_execute_;
 
 		public RelayCommand(Action<object> execute)
 			: this(execute, null)
 		{
 		}
 
-		public RelayCommand(Action<object> execute, Predicate<object> canExecute)
+		public RelayCommand(Action<object> execute, Predicate<object> can_execute)
 		{
 			if (execute == null)
 				throw new ArgumentNullException("execute");
-			_execute = execute;
-			_canExecute = canExecute;
+			execute_ = execute;
+			can_execute_ = can_execute;
 		}
 
 		public bool CanExecute(object parameter)
 		{
-			return _canExecute == null ? true : _canExecute(parameter);
+			return can_execute_ == null ? true : can_execute_(parameter);
 		}
 
 		public event EventHandler CanExecuteChanged
@@ -38,7 +38,7 @@ namespace DemoWpfPosgreSQL.ViewModel
 
 		public void Execute(object parameter)
 		{
-			_execute(parameter);
+			execute_(parameter);
 		}
 	}
 }
