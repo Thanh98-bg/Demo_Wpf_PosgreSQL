@@ -1,5 +1,4 @@
 ﻿using DemoWpfPosgreSQL.Model;
-using DemoWpfPosgreSQL.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,6 +1,4 @@
 ﻿using DemoWpfPosgreSQL.Model;
-using DemoWpfPosgreSQL.ViewModel;
-using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -20,38 +18,33 @@ namespace DemoWpfPosgreSQL.DataAccess
         }
         protected override void AddItem(Employee item)
         {
-            string command_text = $@"INSERT INTO {table_name_}(""EmployeeName"", ""Email"", ""Mobile"", ""Age"") VALUES (@employee_name, @email, @mobile, @age) RETURNING ""EmployeeCode"";";
-            using (NpgsqlCommand command = (NpgsqlCommand)command_)
+            string command_text = $@"INSERT INTO {table_name_}(""EmployeeName"", ""Email"", ""Mobile"", ""Age"") VALUES ('{item.EmployeeName}', '{item.Email}', '{item.Mobile}', {item.Age}) RETURNING ""EmployeeCode"";";
+            using (command_)
             {
-                command.CommandText = command_text;
-                command.Parameters.AddWithValue("employee_name", item.EmployeeName);
-                command.Parameters.AddWithValue("email", item.Email);
-                command.Parameters.AddWithValue("mobile", item.Mobile);
-                command.Parameters.AddWithValue("age", item.Age);
-                item.EmployeeCode = Int32.Parse(command_.ExecuteScalar().ToString());
+                command_.CommandText = command_text;
+                item.EmployeeCode = int.Parse(command_.ExecuteScalar().ToString());
             }
         }
 
         protected override void DeleteItem(Employee item)
         {
             string command_text = $@"DELETE FROM {table_name_} WHERE ""EmployeeCode""={item.EmployeeCode};";
-            using (NpgsqlCommand command = (NpgsqlCommand)command_)
+            using (command_)
             {
-                command.CommandText = command_text;
-                command.ExecuteNonQuery();
+                command_.CommandText = command_text;
+                command_.ExecuteNonQuery();
             }
         }
 
         protected override ICollection<Employee> ExecuteReader()
         {
             ICollection<Employee> employees_ = new List<Employee>();
-
             using (DbDataReader reader = command_.ExecuteReader())
-                while (reader.Read())
-                {
-                    Employee employee = ReadEmployee(reader);
-                    employees_.Add(employee);
-                }
+            while (reader.Read())
+            {
+                Employee employee = ReadEmployee(reader);
+                employees_.Add(employee);
+            }
             return employees_;
         }
         private Employee ReadEmployee(DbDataReader reader)
@@ -75,18 +68,12 @@ namespace DemoWpfPosgreSQL.DataAccess
         protected override void UpdateItem(Employee item)
         {
             var commandText = $@"UPDATE {table_name_}
-                SET ""EmployeeName"" = @employee_name, ""Email"" = @email, ""Mobile"" = @mobile, ""Age"" = @age
-                WHERE ""EmployeeCode"" = @employee_code;";
-
-            using (NpgsqlCommand command = (NpgsqlCommand)command_)
+                SET ""EmployeeName"" = '{item.EmployeeName}', ""Email"" = '{item.Email}', ""Mobile"" = '{item.Mobile}', ""Age"" = {item.Age}
+                WHERE ""EmployeeCode"" = {item.EmployeeCode};";
+            using (command_)
             {
-                command.CommandText = commandText;
-                command.Parameters.AddWithValue("employee_name", item.EmployeeName);
-                command.Parameters.AddWithValue("email", item.Email);
-                command.Parameters.AddWithValue("mobile", item.Mobile);
-                command.Parameters.AddWithValue("age", item.Age);
-                command.Parameters.AddWithValue("employee_code", item.EmployeeCode);
-                command.ExecuteNonQuery();
+                command_.CommandText = commandText;
+                command_.ExecuteNonQuery();
             }
         }
     }
